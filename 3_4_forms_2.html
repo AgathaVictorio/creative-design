@@ -130,12 +130,22 @@
     <!-- START HERE -->
     <form>
       <!-- SWITCH -->
-      <div>
+      <div class="switch">
+        <label>Disable
+          <input type="checkbox" checked>
+          <span class="lever"></span>
+          Enable
+        </label>
 
       </div>
 
       <!-- DISABLED SWITCH -->
-      <div>
+      <div class="switch">
+        <label>Disable
+          <input type="checkbox" disabled>
+          <span class="lever"></span>
+          Enable
+        </label>
 
       </div>
 
@@ -143,42 +153,42 @@
       <br>
 
       <!-- FILE INPUT -->
-      <div>
-        <div>
+      <div class="file-field input-field">
+        <div class="btn grey darken-3">
           <span>Upload File</span>
           <input type="file">
         </div>
-        <div>
-          <input type="text">
+        <div class="file-path-wrapper">
+          <input class="file-path" type="text">
         </div>
       </div>
 
       <!-- RANGE SLIDER -->
-      <p>
-        <input type="range">
+      <p class="range-field">
+        <input type="range" min="0" max="100">
       </p>
 
       <!-- DATE PICKER -->
-      <div>
-        <input type="text" id="date">
+      <div class="input-field">
+        <input type="text" id="date" class="datepicker">
         <label for="date">Choose a Date</label>
       </div>
 
       <!-- TIME PICKER -->
       <div>
-        <input type="text" id="time">
+        <input type="text" id="time" class="timepicker">
         <label for="time">Choose a Time</label>
       </div>
 
       <!-- CHARACTER COUNTER -->
-      <div>
-        <input id="post" type="text">
+      <div class="input-field">
+        <input id="post" type="text" data-length="50">
         <label for="post">Post</label>
       </div>
 
       <!-- AUTOCOMPLETE -->
-      <div>
-        <input type="text" id="fruit">
+      <div class="input-field">
+        <input type="text" id="fruit" class="autocomplete">
         <label for="fruit">Type a Fruit</label>
       </div>
 
@@ -213,6 +223,47 @@
       });
 
       // JAVASCRIPT START HERE //
+      $('.datepicker').on('mousedown', function(e) {
+        e.preventDefault();
+      });
+
+      // INIT DATEPICKER
+      $('.datepicker').pickadate({
+        selectMonths: true,
+        selectYears: 20,
+        closeOnSelect: true
+      })
+
+      $('.timepicker').on('mousedown', function(e) {
+        e.preventDefault();
+      });
+
+      // init timepicker
+      $('.timepicker').
+      pickatime({
+        default: 'now',
+        twelvehour: true,
+        donetext: 'ok',
+        cleartext: 'clear',
+        canceltext: 'cancel',
+        autoclose: true
+      });
+
+      // init autocomplete
+      $('.autocomplete').autocomplete({
+        data: {
+          "Apple": null,
+          "Orange": null,
+          "Banana": null,
+          "Strawberry": null,
+          "Pear": null,
+          "Plumbs": null,
+          "Grapes": null
+        },
+        limit: 20,
+        minLength: 2
+      });
+
 
 
 
